@@ -5,8 +5,10 @@ gem 'rails-api'
 gem 'responders', '~> 2.0'
 gem 'pry-rails'
 
+gem 'unicorn-rails'
+gem 'pg'
+
 group :development, :test do
-  gem 'sqlite3'
   gem 'spring'
   gem 'rspec-rails', '~> 3.0'
   gem 'rspec-support', '~> 3.2.2'

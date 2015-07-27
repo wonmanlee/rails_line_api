@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150727041054) do
+ActiveRecord::Schema.define(version: 20150727205152) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "lines", force: :cascade do |t|
     t.string   "line_text"
@@ -19,5 +22,7 @@ ActiveRecord::Schema.define(version: 20150727041054) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "lines", ["line_index"], name: "index_lines_on_line_index", using: :btree
 
 end
