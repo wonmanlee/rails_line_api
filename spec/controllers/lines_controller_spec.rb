@@ -7,7 +7,7 @@ RSpec.describe V1::LinesController, :type => :controller do
       FactoryGirl.create(:line)
     end
 
-    it "responds successfully with an HTTP 200 status code" do
+    it "valid request responds successfully with an HTTP 200 status code" do
       get :show, { line: 1 }
       expect(response).to be_success
       expect(response).to have_http_status(200)
@@ -23,7 +23,13 @@ RSpec.describe V1::LinesController, :type => :controller do
       expect(response).to be_success
       json = JSON.parse(response.body)
       expect(json["line_text"]).to eq("Test line")
-      expect(json["line_index"]).to eq(1)
+    end
+
+    it "invalid request responds with HTTP 413 status code" do
+      get :show, { line: 0 }
+      expect(response).to have_http_status(413)
+      json = JSON.parse(response.body)
+      expect(json["message"]).to eq("Requested line doesn't exist or is beyond the end of the file.")
     end
   end
 end

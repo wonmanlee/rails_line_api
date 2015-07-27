@@ -4,7 +4,11 @@ module V1
 
     def show
       @line = Line.find_by_line_index(params[:line])
-      render json: @line
+      if @line
+        render json: { line_text: @line.line_text }
+      else
+        render json: { message: "Requested line doesn't exist or is beyond the end of the file." }, status: 413
+      end
     end
   end
 end

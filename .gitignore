@@ -15,3 +15,8 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore all generated text files.
+100.txt
+10000.txt
+100000.txt
