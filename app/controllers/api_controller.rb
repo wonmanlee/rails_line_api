@@ -1,4 +1,4 @@
-class ApiController < ActionController::Base
+class ApiController < ActionController::API
   before_action :hardcode_json_format
 
 private

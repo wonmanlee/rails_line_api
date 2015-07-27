@@ -5,13 +5,11 @@ gem 'rails-api'
 gem 'responders', '~> 2.0'
 gem 'pry-rails'
 
-gem 'sqlite3'
-
-group :development do
+group :development, :test do
+  gem 'sqlite3'
   gem 'spring'
-end
-
-group :test do
   gem 'rspec-rails', '~> 3.0'
+  gem 'rspec-support', '~> 3.2.2'
+  gem 'factory_girl_rails', '~> 4.0'
 end
 
