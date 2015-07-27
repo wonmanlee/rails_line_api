@@ -1,7 +1,12 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+file = ENV["TEXT_FILE"]
+
+def seed_database(file)
+  File.open(file).each_line.with_index do |line, index|
+    l = Line.new
+    l.line_text   = line.chomp
+    l.line_index  = index.to_i + 1
+    l.save!
+  end
+end
+
+seed_database(file)
